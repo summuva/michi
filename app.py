@@ -1,11 +1,10 @@
-from crypt import methods
+
 from flask import Flask
 from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
-from requests import request
-
+from requests import request 
 app= Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///database/tuki.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/tuki.db'
 db= SQLAlchemy(app)
 class Tuki(db.Model):
     id= db.Column(db.Integer, primary_key= True)
@@ -20,9 +19,9 @@ def home():
 
 @app.route(('/create-task'), methods=['POST'])
 def create():
-    tuki= Tuki(content=request.form['content'],done=False)
-    db.session.add(tuki)
-    db.session.commit()
+#    guardar = Tuki(content=request.form['content'],done=False)
+#    db.session.add(guardar)
+#    db.session.commit()
     return'saved'
 
 if __name__ == '__main__':    
